@@ -11,7 +11,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=MY_EMAIL_LETSENCRIPT"
+      - "--certificatesresolvers.myresolver.acme.email=djsasha777@mail.ru"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       # redirect port 80 -> 443
       - "--entrypoints.web.address=:8080"
@@ -27,12 +27,12 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
   guitar-shop-front:
-    image: MY_IMAGE
+    image: latest
     container_name: "guitar-shop-front"
     restart: always
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.guitar-shop-front.rule=Host(`MY_HOSTNAME`)"
+      - "traefik.http.routers.guitar-shop-front.rule=Host(`HOSTNAME`)"
       - "traefik.http.routers.guitar-shop-front.entrypoints=websecure"
       - "traefik.http.routers.guitar-shop-front.tls.certresolver=myresolver"
       # use compression

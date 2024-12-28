@@ -89,7 +89,7 @@ jobs:
             chmod +x compose-clean.sh && ./compose-clean.sh
             ./compose-clean.sh
             sed -i 's|HOSTNAME|dev.spongo.ru|g' docker-compose.yaml
-            SCRIPT_AFTER: |
+          SCRIPT_AFTER: |
             docker-compose up -d
 
   frontdeployprod:
@@ -112,5 +112,5 @@ jobs:
             ./compose-clean.sh
             sed -i 's|latest|${{ github.event.release.tag_name }}|g' docker-compose.yaml
             sed -i 's|HOSTNAME|prod.spongo.ru|g' docker-compose.yaml
-            SCRIPT_AFTER: |
+          SCRIPT_AFTER: |
             docker-compose up -d

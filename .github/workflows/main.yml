@@ -70,12 +70,19 @@ jobs:
             push: true
             tags: ${{ steps.frontmeta.outputs.tags }}
 
-  frontdeploy:
-    name: deploy
+  frontdeploydev:
+    name: deploydev
     runs-on: ubuntu-latest
     needs: [frontbuild]
+    if: ${{ github.ref == 'refs/heads/develop' }}
     steps:
     - uses: actions/checkout@master
 
-  
+  frontdeployprod:
+    name: deployprod
+    runs-on: ubuntu-latest
+    needs: [frontbuild]
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+    - uses: actions/checkout@master
 

@@ -14,13 +14,13 @@ services:
       - "--certificatesresolvers.myresolver.acme.email=MY_EMAIL_LETSENCRIPT"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       # redirect port 80 -> 443
-      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.address=:8080"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
     ports:
       - "443:443"
-      - "80:80"
+      - "80:8080"
       #- "8080:8080"
     volumes:
       - "./letsencrypt:/letsencrypt"
